@@ -1,0 +1,24 @@
+{
+  "name": "gerenciadorpodcast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "dev:watch": "tsx src/server.ts",
+    "dist": "tsup src",
+    "dev:dist": "npm run dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "tsx": "^4.10.4",
+    "typescript": "^5.4.5"
+  }
+}
