@@ -8,10 +8,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "tsx src/server.ts",
-    "dev:watch": "tsx src/server.ts",
+    "dev": "tsx --env-file=.env src/server.ts",
+    "dev:watch": "tsx --env-file=.env src/server.ts",
     "dist": "tsup src",
-    "dev:dist": "npm run dist"
+    "dev:dist": "npm run dist && --env-file=.env src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +20,8 @@
     "tsup": "^8.0.2",
     "tsx": "^4.10.4",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.12"
   }
 }
