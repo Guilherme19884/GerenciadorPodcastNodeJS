@@ -15,14 +15,10 @@ Podcasts feitos em vídeo
 ## Como
 
 ### Feature
-Vou retornar um uma api rest (json) 
-nome podcast,
-nome do episodio,
-imagem da capa,
-link,
-category
 
+GET: Retorna lista de episódios
 
+response: 
 ```Js
 [
     {
