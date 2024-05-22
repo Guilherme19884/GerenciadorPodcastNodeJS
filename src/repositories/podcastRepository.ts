@@ -1,18 +1,13 @@
 import fs from "fs"
 import path from "path"
+import { Podcast } from "../models/pocastModels"
 
 
-interface Podcast {
-    podcastName: string,
-    episode: string,
-    videoId: string,
-    categories: string[]
-}
 
 
 const pathData = path.join(__dirname, "../repositories/podcasts.json")
 
-export const repositoryPodcast = async (): Promise <Podcast[]> => {
+export const repositoryPodcast = async (): Promise<Podcast[]> => {
     const rawdata = fs.readFileSync(pathData, "utf-8")
     const jsonFile = JSON.parse(rawdata)
     return jsonFile
