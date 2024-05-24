@@ -4,12 +4,17 @@ import { getFilterEpisodes, getListEpisodes } from './controllers/podcastsContro
 
 const server = http.createServer(
    async (request: http.IncomingMessage, response: http.ServerResponse ) => {
-        
-        if(request.method === 'GET' && request.url ==="/api/list"){
+
+        //querystring
+        const [baseUrl, querystring] =  request.url?.split("?") ?? ["",""]
+
+
+        //Listar Podcasts    
+        if(request.method === "GET" && baseUrl ==="/api/list"){
            await getListEpisodes(request, response)
         }
-
-        if(request.method === "GET" && request.url === "/api/episode"){
+        //Listar por nome
+        if(request.method === "GET" && baseUrl === "/api/episode"){
             await getFilterEpisodes(request, response)
         }
     }
