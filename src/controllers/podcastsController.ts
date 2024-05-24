@@ -1,12 +1,27 @@
-import { IncomingMessage, ServerResponse } from 'http'
+import { IncomingMessage, ServerResponse } from 'http';
+import { serviceListEpisodes } from '../services/listEpisodesService';
+import { serviceFilterEpisodes } from '../services/filterEpisodesService';
 
-import { serviceListEpisodes } from '../services/lisEpisodesService'
+export const getListEpisodes = async (request: IncomingMessage, response: ServerResponse) => {
+    try {
+        const content = await serviceListEpisodes();
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify(content));
+    } catch (error) {
+        console.error("Error in getListEpisodes:", error);
+        response.writeHead(500, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ error: "Internal Server Error" }));
+    }
+};
 
-
-export const getListEpisodes  = async ( request: IncomingMessage, response: ServerResponse) =>{
-
-    const content = serviceListEpisodes()
-
-    response.writeHead(200,{'Contet-Type': 'application/jose'})
-    response.end(JSON.stringify({content}))
-}
+export const getFilterEpisodes = async (request: IncomingMessage, response: ServerResponse) => {
+    try {
+        const content = await serviceFilterEpisodes('flow');
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify(content));
+    } catch (error) {
+        console.error("Error in getFilterEpisodes:", error);
+        response.writeHead(500, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ error: "Internal Server Error" }));
+    }
+};
